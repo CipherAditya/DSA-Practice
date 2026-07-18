@@ -2,12 +2,7 @@ name: Auto-Tweet Progress
 on:
   push:
     branches:
-      - main  # Wakes up when a commit hits your main branch
-    paths:
-      - '**/*.js'   # Triggers if a JavaScript file is added/changed
-      - '**/*.java' # Triggers if a Java file is added/changed
-      - '**/*.cpp'  # Triggers if a C++ file is added/changed
-      - '**/*.py'   # Triggers if a Python file is added/changed
+      - main  # Wakes up on ANY commit to the main branch
 
 jobs:
   tweet:
@@ -16,7 +11,7 @@ jobs:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # Fetches the commit history to grab message details
+          fetch-depth: 2
 
       - name: Parse Latest Commit Message
         id: parse_msg
