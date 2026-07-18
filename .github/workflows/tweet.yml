@@ -24,16 +24,16 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=%B | head -n 1)
           echo "msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
 
-      - name: Post to X
-        uses: infraway/tweet-action@v1
+      - name: Post to X (API V2)
+        uses: noweh/post-tweet-v2-action@v1.0
         with:
-          status: |
+          message: |
             Another one down! 🚀 
 
             Latest progress: ${{ steps.parse_msg.outputs.msg }}
 
             #DSA #BuildInPublic #Coding
-          api_key: ${{ secrets.TWITTER_CONSUMER_KEY }}
-          api_key_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
-          access_token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          consumer-key: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          consumer-secret: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
